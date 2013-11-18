@@ -36,6 +36,13 @@ function getLabScores($connection){
 	return $statement;
 }
 
+function prepareStatementStudent($connection, $id, $first, $last, $gender, $grade){
+	$statement = $connection->prepare("INSERT INTO STUDENT
+		(ID, FirstName, LastName, Gender, Grade) VALUES (?, ?, ?, ?, ?)");
+	$statement->bind_param("issss", $id, $first, $last, $gender, $grade);
+	return $statement;
+}
+
 function dbDisconnect($connection){
 	mysqli_close($connection);
 }
