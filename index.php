@@ -14,17 +14,17 @@
     function submitMe() {
     $.ajax({
     method: 'post',
-    url: 'Procedures.php',
+    url: 'Procedures/InsertStudent.php',
     data: {
-    'id': $('input[name="id"]').val(),
-    'firstname': $('input[name="firstname"]').val(),
-    'lastname': $('input[name="lastname"]').val(),
-    'gender': $('input[name="gender"]').val(),
-    'grade': $('input[name="grade"]').val(),
-    'term': $('input[name="term"]').val(),
-    'year': $('input[name="year"]').val(),
-    'present': $('input[name="present"]').val(),
-    'abcenses': $('input[name="abcenses"]').val()
+    'id': $('input[name="ID"]').val(),
+    'firstname': $('input[name="FirstName"]').val(),
+    'lastname': $('input[name="LastName"]').val(),
+    'gender': $('input[name="Gender"]').val(),
+    'grade': $('input[name="Grade"]').val(),
+    'term': $('input[name="Term"]').val(),
+    'year': $('input[name="Year"]').val(),
+    'present': $('input[name="Present"]').val(),
+    'abcenses': $('input[name="Absences"]').val()
     },
     success: function (data) {
     alert("success");
@@ -96,7 +96,7 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
       </div>
-      <iframe style="display:none;" name="my-iframe" scr="Procedure/InsertStudent.php"></iframe>
+      <iframe style="display:none;" name="my-iframe" src="Procedures/InsertStudent.php"></iframe>
     </div>
     <div id="tabs-2">
       <p>Tab2 Content</p>
