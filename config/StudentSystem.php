@@ -144,7 +144,7 @@ else{
 
 $createAttendanceTable = "CREATE TABLE IF NOT EXISTS `ATTENDANCE` (
 	`ID` INT(3),
-	`Absenses` INT(3) DEFAULT 0,
+	`Absences` INT(3) DEFAULT 0,
 	`Present` BOOLEAN DEFAULT TRUE
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
@@ -233,7 +233,7 @@ else{
 	echo "Error INSERT table " . mysqli_error($con);
 }
 
-$attendanceData = "INSERT INTO `ATTENDANCE` (`ID`, `Absenses`, `Present`) VALUES
+$attendanceData = "INSERT INTO `ATTENDANCE` (`ID`, `Absences`, `Present`) VALUES
 (123, 3, TRUE),
 (456, 4, TRUE),
 (789, 1, TRUE),

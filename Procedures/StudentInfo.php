@@ -18,7 +18,7 @@ echo "<table border='1'>
 <th>Term</th>
 <th>Year</th>
 <th>Present</th>
-<th>Abcenses</th>
+<th>Absences</th>
 </tr>";
 
 while($row = mysqli_fetch_array($result))
@@ -32,7 +32,7 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['Term'] . "</td>";
   echo "<td>" . $row['Year'] . "</td>";
   echo "<td>" . $row['Present'] . "</td>";
-  echo "<td>" . $row['Absenses'] . "</td>";
+  echo "<td>" . $row['Absences'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";
