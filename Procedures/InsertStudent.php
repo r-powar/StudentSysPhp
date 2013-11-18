@@ -1,7 +1,7 @@
 <?php
 
 include("Procedures/StudentProcedures.php");
-
+/*
 if($_POST){
 	$con = mysqli_connect("127.0.0.1", "steven", "password"); //Username and Password to connect to phpMyAdmin
 	if ($con->connect_errno) {
@@ -33,7 +33,6 @@ if($_POST){
 	mysqli_close($con);
 }
 
-/*
 $connection = dbConnect();
 
 $ID = $_POST['ID'];
@@ -47,20 +46,33 @@ $statement = prepareStatementStudent($connection, $ID, $FirstName, $LastName, $G
 $statement->execute();
 
 dbDisconnect($connection);
+*/
 
+$con = mysqli_connect("localhost", "root", "", "localhost");
+if(mysqli_connect_errno()){
+	echo "Failed to connect to MySQL: " . mysqli_connect_errno();
+}
 
-$insertStudent = "INSERT INTO `STUDENT` (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
-($_POST['ID'], $_POST['FirstName'], $_POST['LastName'], '$_POST['Gender'], $_POST['Grade'])";
+$insertStudent = "INSERT INTO STUDENT (ID, FirstName, LastName, Gender, Grade) VALUES
+('$_POST[ID]', '$_POST[FirstName]', '$_POST[LastName]', '$_POST[Gender]', '$_POST[Grade]')";
 
-$insertSemester = "INSERT INTO `SEMESTER` (`ID`, `TERM`, `YEAR`) VALUES
-($_POST['ID'], $_POST['Term'], $_POST['Year'])";
+$insertSemester = "INSERT INTO SEMESTER (ID, TERM, YEAR) VALUES
+('$_POST[ID]', '$_POST[Term]', '$_POST[Year]')";
 
-$insertAttendance = "INSERT INTO `ATTENDANCE` (`ID`, `Absenses`, `Present`) VALUES
-($_POST['ID'], $_POST['Absences'], $_POST['Present'])";
+$insertAttendance = "INSERT INTO ATTENDANCE (ID, Absenses, Present) VALUES
+('$_POST[ID]', '$_POST[Absences]', '$_POST[Present]')";
 
-mysqli_query($con,$insertStudent);
-mysqli_query($con,$insertSemester);
-mysqli_query($con,$insertAttendance);
+if(!mysqli_query($con, $insertStudent)){
+	die('Error: ' . mysqli_error($con));
+}
+
+if(!mysqli_query($con, $insertSemester)){
+	die('Error: ' . mysqli_error($con));
+}
+
+if(!mysqli_query($con, $insertAttendance)){
+	die('Error: ' . mysqli_error($con));
+}
 
 echo "Student record added";
 
