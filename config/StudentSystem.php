@@ -106,7 +106,7 @@ else{
 $createSemesterTable = "CREATE TABLE IF NOT EXISTS `SEMESTER` (
 	`ID` INT(3),
 	`Term` VARCHAR(10) COLLATE utf8_unicode_ci,
-	`YEAR` INT(5)
+	`Year` INT(5)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
 if(mysqli_query($con, $createSemesterTable)){
