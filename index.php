@@ -96,7 +96,7 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
       </div>
-      <iframe style="display:none;" name="my-iframe" src="Procedures/InsertStudent.php"></iframe>
+      <iframe name="my-iframe" src="Procedures/InsertStudent.php"></iframe>
     </div>
     <div id="tabs-2">
       <p>Tab2 Content</p>
