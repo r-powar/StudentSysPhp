@@ -105,8 +105,8 @@ else{
 
 $createSemesterTable = "CREATE TABLE IF NOT EXISTS `SEMESTER` (
 	`ID` INT(3),
-	`Term` VARCHAR(10) COLLATE utf8_unicode_ci,
-	`Year` INT(5)
+	`Term` VARCHAR(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+	`Year` INT(5) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
 if(mysqli_query($con, $createSemesterTable)){
@@ -118,8 +118,8 @@ else{
 
 $createExamInfoTable = "CREATE TABLE IF NOT EXISTS `EXAMINFO` (
 	`ID` INT(3), 
-	`Version` INT(1),
-	`Date` DATE 
+	`Version` INT(1) DEFAULT NULL,
+	`Date` DATE DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
 if(mysqli_query($con, $createExamInfoTable)){
@@ -130,8 +130,8 @@ else{
 }
 
 $createExamResultTable = "CREATE TABLE IF NOT EXISTS `EXAMRESULT` ( 
-	`ID` INT(3),
-	`Score` INT(3), 
+	`ID` INT(3) DEFAULT NULL,
+	`Score` INT(3) DEFAULT NULL, 
 	`LetterGrade` CHAR NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
@@ -144,8 +144,8 @@ else{
 
 $createAttendanceTable = "CREATE TABLE IF NOT EXISTS `ATTENDANCE` (
 	`ID` INT(3),
-	`Absences` INT(3) DEFAULT 0,
-	`Present` BOOLEAN DEFAULT TRUE
+	`Absences` INT(3) DEFAULT '0',
+	`Present` tinyint(1) DEFAULT '1'
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
 if(mysqli_query($con, $createAttendanceTable)){
@@ -157,9 +157,9 @@ else{
 
 $createLabResultTable = "CREATE TABLE IF NOT EXISTS `LABRESULT` (
 	`ID` INT(3), 
-	`LabLow` INT(3), 
-	`LabHigh` INT(3), 
-	`LabPassFail` BOOLEAN
+	`LabLow` INT(3) DEFAULT NULL, 
+	`LabHigh` INT(3) DEFAULT NULL, 
+	`LabPassFail` tinyint(1) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
 if(mysqli_query($con, $createLabResultTable)){
@@ -167,6 +167,29 @@ if(mysqli_query($con, $createLabResultTable)){
 }
 else{
 	echo "Error Create Table " . mysqli_error($con);
+}
+
+/***********************************************************************************
+						TRIGGERS
+************************************************************************************/
+
+$updatePassFail = "DROP TRIGGER IF EXISTS `UpdatePassFail`;
+DELIMITER //
+CREATE TRIGGER `UpdatePassFail` AFTER INSERT ON `ATTENDANCE`
+ FOR EACH ROW Begin
+	IF NEW.Present=0
+	THEN INSERT INTO EXAMRESULT VALUES (New.ID, 0, 'F');
+	
+	End IF;
+End
+//
+DELIMITER ;";
+
+if(mysqli_multi_query($con, $updatePassFail)){
+	echo "Create UpdatePassFail trigger successfully\n";
+}
+else{
+	echo "Error Create trigger " . mysqli_error($con);
 }
 
 /***********************************************************************************
