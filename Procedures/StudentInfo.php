@@ -8,6 +8,10 @@ if (mysqli_connect_errno())
 $result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
                             SEMESTER NATURAL JOIN ATTENDANCE");
 
+
+//$result = mysqli_query($con,"CALL `ViewStudent` (
+//);");
+
 echo "<table border='1'>
 <tr>
 <th>ID</th>

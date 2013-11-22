@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <h1>LOGIN PAGE TO STUDENTSYSTEM</h1>
 <h2>ADMIN LOGIN: USERNAME=ADMIN, PASSWORD=ADMIN</h2>
-<h2>STUDENT LOGIN: USERNAME=ADMIN, PASSWORD=STUDENT</h2>
+<h2>STUDENT LOGIN: USERNAME=STUDENT, PASSWORD=STUDENT</h2>
 
 Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20">
 Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" maxlength="16">

@@ -104,7 +104,9 @@ if (!empty($_POST)){
     <div id="tabs-3">
       <p>Tab3 Content</p>
       <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">View Detailed Student Information</a>
-      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" scr="Procedures/StudentInfo.php"></iframe>
+      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">View Detailed Student Information</a>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
+
     </div>
   </div>
 </body>
