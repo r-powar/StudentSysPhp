@@ -1,6 +1,6 @@
 <?php
 
-include("Procedures/StudentProcedures.php");
+include("StudentProcedures.php");
 
 if($_POST){
 	$con = mysqli_connect("localhost", "root", "", "StudentSystem"); //Username and Password to connect to phpMyAdmin
@@ -18,7 +18,7 @@ if($_POST){
 	$Term = $_POST['Term'];
 	$Year = $_POST['Year'];
 	$Present = $_POST['Present'];
-	$Attendance = $_POST['Absences'];
+	$Absences = $_POST['Absences'];
 
 	$ID = htmlspecialchars($ID);
 	$FirstName = htmlspecialchars($FirstName);
@@ -28,7 +28,7 @@ if($_POST){
 	$Term = htmlspecialchars($Term);
 	$Year = htmlspecialchars($Year);
 	$Present = htmlspecialchars($Present);
-	$Attendance = htmlspecialchars($Attendance);
+	$Absences = htmlspecialchars($Absences);
 
 	$studentInsert = "
 	INSERT INTO Student (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
@@ -56,52 +56,5 @@ if($_POST){
 
 	mysqli_close($con);
 }
-/*
-$connection = dbConnect();
-
-$ID = $_POST['ID'];
-$FirstName = $_POST['FirstName'];
-$LastName = $_POST['LastName'];
-$Gender = $_POST['Gender'];
-$Grade = $_POST['Grade'];
-
-$statement = prepareStatementStudent($connection, $ID, $FirstName, $LastName, $Gender, $Grade);
-
-$statement->execute();
-
-dbDisconnect($connection);
-
-
-$con = mysqli_connect("localhost", "root", "", "localhost");
-if(mysqli_connect_errno()){
-	echo "Failed to connect to MySQL: " . mysqli_connect_errno();
-}
-
-$insertStudent = "INSERT INTO STUDENT (ID, FirstName, LastName, Gender, Grade) VALUES
-('$_POST[ID]', '$_POST[FirstName]', '$_POST[LastName]', '$_POST[Gender]', '$_POST[Grade]')";
-
-$insertSemester = "INSERT INTO SEMESTER (ID, TERM, YEAR) VALUES
-('$_POST[ID]', '$_POST[Term]', '$_POST[Year]')";
-
-$insertAttendance = "INSERT INTO ATTENDANCE (ID, Absenses, Present) VALUES
-('$_POST[ID]', '$_POST[Absences]', '$_POST[Present]')";
-
-if(!mysqli_query($con, $insertStudent)){
-	die('Error: ' . mysqli_error($con));
-}
-
-if(!mysqli_query($con, $insertSemester)){
-	die('Error: ' . mysqli_error($con));
-}
-
-if(!mysqli_query($con, $insertAttendance)){
-	die('Error: ' . mysqli_error($con));
-}
-
-echo "Student record added";
-
-mysqli_close($con);
-*/
-
 
 ?> 
