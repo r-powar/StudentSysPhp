@@ -10,28 +10,6 @@
     });
   </script>
   
-  <script>
-    function submitMe() {
-    $.ajax({
-    method: 'post',
-    url: 'Procedures/InsertStudent.php',
-    data: {
-    'id': $('input[name="ID"]').val(),
-    'firstname': $('input[name="FirstName"]').val(),
-    'lastname': $('input[name="LastName"]').val(),
-    'gender': $('input[name="Gender"]').val(),
-    'grade': $('input[name="Grade"]').val(),
-    'term': $('input[name="Term"]').val(),
-    'year': $('input[name="Year"]').val(),
-    'present': $('input[name="Present"]').val(),
-    'abcenses': $('input[name="Absences"]').val()
-    },
-    success: function (data) {
-    alert("success");
-    }
-    });
-    }
-  </script>
 
   <style>
     #myheader {
@@ -46,10 +24,11 @@
     width: 200px;
     clear: both;
     }
-    form input {
+    
+    /*form input {
     width: 100%;
     clear: both;
-    }
+    }*/
 
     tr:nth-child(even) {
     background-color: #81BEF7;
@@ -63,6 +42,7 @@ if (!empty($_POST)){
     window.location = window.location.href;
   </script>
   <?php } ?>
+  
 </head>
 
 <body>
@@ -80,29 +60,31 @@ if (!empty($_POST)){
       </li>
     </ul>
     <div id="tabs-1">
-      <p>Tab1 Content </p>
-	    <?php echo "(This line executed by php)"; ?>
       <div class="registration">
         <form action="Procedures/InsertStudent.php" target="my-iframe" method="post">
           ID: <input type="text" name="ID"></input><br>
           First Name: <input type="text" name="FirstName"></input><br>
           Last Name: <input type="text" name="LastName"></input><br>
-          Gender: <input type="text" name="Gender"></input><br>
+          Gender:<br> 
+            <input type="radio" name="Gender" value="Male">Male</input><br>
+            <input type="radio" name="Gender" value="Female">Female</input><br>
           Grade: <input type="text" name="Grade"></input><br>
-          Term: <input type="text" name="Term"></input><br>
+          Term: <br>
+            <input type="radio" name="Term" value="Fall">Fall</input><br>
+            <input type="radio" name="Term" value="Spring">Spring</input><br>
           Year: <input type="text" name="Year"></input><br>
-          Present: <input type="text" name="Present"></input><br>
+          Present: <br>
+            <input type="radio" name="Present" value="0">Yes</input><br>
+            <input type="radio" name="Present" value="1">No</input><br>
           Number of Absences: <input type="text" name="Absences"></input><br><br>
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
       </div>
-      <iframe name="my-iframe" src="Procedures/InsertStudent.php"></iframe>
+      <iframe style="" name="my-iframe" frameborder="0" scr="Procedures/InsertStudent.php"></iframe>
     </div>
     <div id="tabs-2">
-      <p>Tab2 Content</p>
     </div>
     <div id="tabs-3">
-      <p>Tab3 Content</p>
       <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">View Detailed Student Information</a>
       <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" scr="Procedures/StudentInfo.php"></iframe>
     </div>
