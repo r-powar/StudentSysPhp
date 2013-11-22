@@ -39,3 +39,22 @@ echo "</table>";
 
 mysqli_close($con);
 ?>
+<style>
+  th {
+  background-color:black;
+  color:white;
+  }
+
+  tr:nth-child(even) {
+  background-color: #A9D0F5;
+  }
+
+  tr:hover {
+  background-color: #BDBDBD
+  }
+  
+  table th {
+  padding-right: 20px;
+  padding-bottom: 10px;
+  }
+</style>
