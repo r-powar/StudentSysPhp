@@ -140,3 +140,13 @@ INSERT INTO `STUDENT` (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
 (567, 'Suneuy', 'Kim', 'Female', 'Sophmore'),
 (666, 'Cay', 'Horstmann', 'Male', 'Freshman'),
 (789, 'Tieu', 'Nguyen', 'Male', 'Senior');
+
+/***********************************************************************************
+            CREATE PROCEDURES
+************************************************************************************/
+DELIMITER //
+
+CREATE PROCEDURES ViewStudent()
+	BEGIN
+	SELECT * FROM STUDENT; end //
+DELIMITER ; 
