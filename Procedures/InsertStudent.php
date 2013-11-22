@@ -1,7 +1,5 @@
 <?php
 
-include("StudentProcedures.php");
-
 if($_POST){
 	$con = mysqli_connect("localhost", "root", "", "StudentSystem"); //Username and Password to connect to phpMyAdmin
 	if ($con->connect_errno) {
@@ -30,9 +28,11 @@ if($_POST){
 	$Present = htmlspecialchars($Present);
 	$Absences = htmlspecialchars($Absences);
 
+
 	$studentInsert = "
 	INSERT INTO Student (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
 	('$ID', '$FirstName', '$LastName', '$Gender', '$Grade')";
+
 
 	$semesterInsert = "
 	INSERT INTO Semester (`ID`, `Term`, `Year`) VALUES
@@ -53,6 +53,7 @@ if($_POST){
             die('Error: ' . mysqli_error($con));
         }
 	echo "<h1>Student Record Inserted!</h2>";
+		echo "<h2>$FirstName</h2>";
 
 	mysqli_close($con);
 }
