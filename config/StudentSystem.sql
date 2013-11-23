@@ -80,7 +80,7 @@ End
 //
 DELIMITER ;
 
-DROP TRIGGER IF EXISTS `Delete`;
+DROP TRIGGER IF EXISTS `DeleteStudentCascade`;
 DELIMITER //
 CREATE TRIGGER `DeleteStudentCascade` AFTER DELETE ON `STUDENT`
  FOR EACH ROW BEGIN
@@ -148,9 +148,31 @@ INSERT INTO `STUDENT` (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
 /***********************************************************************************
             CREATE PROCEDURES
 ************************************************************************************/
+DROP PROCEDURE IF EXISTS ViewStudent;
 DELIMITER //
-
 CREATE PROCEDURE ViewStudent()
 	BEGIN
-	SELECT * FROM STUDENT; end; //
+	SELECT * 
+  FROM STUDENT NATURAL JOIN SEMESTER NATURAL JOIN ATTENDANCE; 
+  end; //
 DELIMITER ; 
+
+DROP PROCEDURE IF EXISTS StudentByGrade;
+DELIMITER //
+CREATE PROCEDURE StudentByGrade(IN theGrade VARCHAR(20))
+BEGIN
+SELECT FirstName, LastName
+FROM Student
+Where Grade=theGrade;
+END; //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS countStudentByTerm;
+DELIMITER //
+CREATE PROCEDURE countStudentByTerm(IN theTerm VARCHAR(10))
+BEGIN
+SELECT count(distinct ID)
+FROM STUDENT NATURAL JOIN SEMESTER
+WHERE TERM=theTerm;
+END; //
+DELIMITER ;
