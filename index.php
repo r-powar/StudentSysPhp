@@ -58,6 +58,9 @@ if (!empty($_POST)){
       <li>
         <a href="#tabs-3">Viewing Results</a>
       </li>
+      <li>
+        <a href="#tabs-4">Delete Student</a>
+      </li>
     </ul>
     <div id="tabs-1">
       <div class="registration">
@@ -85,10 +88,17 @@ if (!empty($_POST)){
     <div id="tabs-2">
     </div>
     <div id="tabs-3">
-      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">View Detailed Student Information</a>
-      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">View Detailed Student Information</a>
+      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
       <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
-
+    </div>
+    <div id="tabs-4">
+      <form action="Procedures/DeleteStudent.php" target="my-iframe" method="post">
+          <p>DELETE Student</p>
+          ID: <input type="text" name="ID"></input><br>
+          First Name: <input type="text" name="FirstName"></input><br>
+          Last Name: <input type="text" name="LastName"></input><br>
+          <input type="submit" value="Submit Delete" id="DeleteStudent"></input>
+      </form>
     </div>
   </div>
 </body>

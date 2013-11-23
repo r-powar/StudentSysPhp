@@ -4,13 +4,12 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-
+/*
 $result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
                             SEMESTER NATURAL JOIN ATTENDANCE");
+*/
 
-
-//$result = mysqli_query($con,"CALL `ViewStudent` (
-//);");
+$result = mysqli_query($con,"CALL `ViewStudent` ( );");
 
 echo "<table border='1'>
 <tr>
