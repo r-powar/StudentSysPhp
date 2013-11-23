@@ -20,7 +20,7 @@
     border: 1px solid black;
     }
 
-    .registration {
+    .registration, .deletestudent {
     width: 200px;
     clear: both;
     }
@@ -53,13 +53,13 @@ if (!empty($_POST)){
         <a href="#tabs-1">Student Registration</a>
       </li>
       <li>
-        <a href="#tabs-2">Exam Taking</a>
+        <a href="#tabs-2">Delete Student</a>
       </li>
       <li>
-        <a href="#tabs-3">Viewing Results</a>
+        <a href="#tabs-3">Update Student</a>
       </li>
       <li>
-        <a href="#tabs-4">Delete Student</a>
+        <a href="#tabs-4">Viewing Results</a>
       </li>
     </ul>
     <div id="tabs-1">
@@ -83,22 +83,26 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
       </div>
-      <iframe style="" name="my-iframe" frameborder="0" scr="Procedures/InsertStudent.php"></iframe>
+      <iframe style="" width="100%" height="100%" seamless="seamless" name="my-iframe" frameborder="0" src="Procedures/InsertStudent.php"></iframe>
     </div>
     <div id="tabs-2">
-    </div>
-    <div id="tabs-3">
-      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
-      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
-    </div>
-    <div id="tabs-4">
-      <form action="Procedures/DeleteStudent.php" target="my-iframe" method="post">
+      <div class="deletestudent">
+        <form action="Procedures/DeleteStudent.php" target="my-iframe3" method="post">
           <p>DELETE Student</p>
           ID: <input type="text" name="ID"></input><br>
-          First Name: <input type="text" name="FirstName"></input><br>
-          Last Name: <input type="text" name="LastName"></input><br>
-          <input type="submit" value="Submit Delete" id="DeleteStudent"></input>
-      </form>
+            First Name: <input type="text" name="FirstName"></input><br>
+              Last Name: <input type="text" name="LastName"></input><br>
+                <input type="submit" value="Submit Delete" id="DeleteStudent"></input>
+              </form>
+      </div>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe3" src="Procedures/DeleteStudent.php"></iframe>
+    </div>
+    <div id="tabs-3">
+      <p>UPDATE Student</p>
+    </div>
+    <div id="tabs-4">
+      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
     </div>
   </div>
 </body>
