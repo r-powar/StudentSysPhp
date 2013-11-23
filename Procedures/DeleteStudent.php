@@ -14,8 +14,12 @@ if($_POST){
 
 	$ID = htmlspecialchars($ID);
 	$FirstName = htmlspecialchars($FirstName);
-	$LastName = htmlspecialchars($LastName);
+	$LastName = htmlspecialchars($LastName);	
+	$SQL = "SELECT * FROM STUDENT WHERE ID='ID' and FirstName='FirstName' and LastName='LastName';";
+	$result = mysqli_query($SQL);
+	$num_row = 0;
 
+	if($num_row > 0){
 	$deleteStudent = "
 	DELETE From Student Where ID='$ID' and FirstName='$FirstName' and LastName='$LastName';";
 
@@ -23,8 +27,13 @@ if($_POST){
             die('Error: ' . mysqli_error($con));
         }
 	echo "<h1>Deleted Student Record!</h2>";
-	
+
 	mysqli_close($con);
+	}
+	else{
+		die('Error: Student Not Found');
+	}
+
 }
 
 ?> 

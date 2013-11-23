@@ -77,8 +77,8 @@ if (!empty($_POST)){
             <input type="radio" name="Term" value="Spring">Spring</input><br>
           Year: <input type="text" name="Year"></input><br>
           Present: <br>
-            <input type="radio" name="Present" value="0">Yes</input><br>
-            <input type="radio" name="Present" value="1">No</input><br>
+            <input type="radio" name="Present" value="1">Yes</input><br>
+            <input type="radio" name="Present" value="0">No</input><br>
           Number of Absences: <input type="text" name="Absences"></input><br><br>
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
