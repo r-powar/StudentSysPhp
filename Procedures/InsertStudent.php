@@ -28,11 +28,20 @@ if($_POST){
 	$Present = htmlspecialchars($Present);
 	$Absences = htmlspecialchars($Absences);
 
+	$Month = "";
+	$Date = "";
+	$Version = rand(1, 2);
+	
+	if($Term == 'Spring'){
+		$Month = "05-10";
+	}else{
+		$Month = "12-10";
+	}
+	$Date = $Year."-".$Month;
 
 	$studentInsert = "
 	INSERT INTO Student (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
 	('$ID', '$FirstName', '$LastName', '$Gender', '$Grade')";
-
 
 	$semesterInsert = "
 	INSERT INTO Semester (`ID`, `Term`, `Year`) VALUES
@@ -41,6 +50,11 @@ if($_POST){
 	$attendanceInsert = "
 	INSERT INTO Attendance (`ID`, `Absences`, `Present`) VALUES
 	('$ID', '$Absences', '$Present')";
+
+	$examinfoInsert = "
+	INSERT INTO EXAMINFO (`ID`, `Version`, `Date`) VALUES 
+	('$ID', '$Version', '$Date')";
+
 //	mysqli_query($query);
 	if (!mysqli_query($con,$studentInsert)) {
             die('Error: ' . mysqli_error($con));
@@ -50,6 +64,9 @@ if($_POST){
             die('Error: ' . mysqli_error($con));
         }
     if (!mysqli_query($con,$attendanceInsert)) {
+            die('Error: ' . mysqli_error($con));
+        }
+    if (!mysqli_query($con,$examinfoInsert)) {
             die('Error: ' . mysqli_error($con));
         }
 	echo "<h1>Student Record Inserted!</h2>";
