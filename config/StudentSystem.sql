@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `STUDENT`;
 ************************************************************************************/
 CREATE TABLE IF NOT EXISTS `ATTENDANCE` (
   `ID` int(3) DEFAULT NULL,
-  `Absences` int(3) DEFAULT '0',
-  `Present` tinyint(1) DEFAULT '1'
+  `Absences` int(3) NULL,
+  `Present` tinyint(1) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `EXAMINFO` (
   `ID` int(3) DEFAULT NULL,
-  `Version` int(1) DEFAULT NULL,
+  `Version` int(1) DEFAULT 1,
   `Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `LABRESULT` (
 
 CREATE TABLE IF NOT EXISTS `SEMESTER` (
   `ID` int(3) DEFAULT NULL,
-  `Term` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'Spring',
-  `Year` int(5) DEFAULT 2012
+  `Term` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'Fall',
+  `Year` int(5) DEFAULT 2013
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `STUDENT` (
@@ -80,6 +80,19 @@ End
 //
 DELIMITER ;
 
+DROP TRIGGER IF EXISTS `Delete`;
+DELIMITER //
+CREATE TRIGGER `DeleteStudentCascade` AFTER DELETE ON `STUDENT`
+ FOR EACH ROW BEGIN
+  DELETE from EXAMRESULT where ID = old.ID;
+  DELETE from LABRESULT where ID = old.ID;
+  DELETE from ATTENDANCE where ID = old.ID;
+  DELETE from EXAMINFO where ID = old.ID;
+  DELETE from SEMESTER where ID = old.ID;
+END
+//
+DELIMITER ;
+
 /***********************************************************************************
             INSERT DATA TABLES
 ************************************************************************************/
@@ -106,7 +119,7 @@ INSERT INTO `EXAMRESULT` (`ID`, `Score`, `LetterGrade`) VALUES
 (234, 4, 'D'),
 (567, 2, 'F'),
 (666, 0, 'F');
-
+/*
 INSERT INTO `LABRESULT` (`ID`, `LabScore`, `LabPassFail`) VALUES
 (123, 10, 1),
 (456, 10, 1),
@@ -114,6 +127,7 @@ INSERT INTO `LABRESULT` (`ID`, `LabScore`, `LabPassFail`) VALUES
 (234, 6, 1),
 (567, 4, 1),
 (666, 0, 0);
+*/
 
 INSERT INTO `SEMESTER` (`ID`, `Term`, `Year`) VALUES
 (123, 'Spring', 2012),
