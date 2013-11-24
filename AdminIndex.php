@@ -26,7 +26,7 @@
     border: 1px solid black;
     }
 
-    .registration, .deletestudent {
+    .registration, .deletestudent, .updatestudent {
     width: 200px;
     clear: both;
     }
@@ -125,6 +125,34 @@ if (!empty($_POST)){
     </div>
     <div id="tabs-3">
       <p>UPDATE Student</p>
+      <div class="updatestudent">
+        <form action="Procedures/StudentUpdate.php" target="upd-iframe" method="post">
+          ID: <input type="text" name="ID"></input><br>
+            First Name: <input type="text" name="FirstName"></input><br>
+              Last Name: <input type="text" name="LastName"></input><br>
+                Gender:<br>
+                  <input type="radio" name="Gender" value="Male">Male</input>
+                  <br>
+                    <input type="radio" name="Gender" value="Female">Female</input>
+                    <br>
+                      Grade: <input type="text" name="Grade"></input><br>
+                        Term: <br>
+                          <input type="radio" name="Term" value="Fall">Fall</input>
+                          <br>
+                            <input type="radio" name="Term" value="Spring">Spring</input>
+                            <br>
+                              Year: <input type="text" name="Year"></input><br>
+                                Present: <br>
+                                  <input type="radio" name="Present" value="1">Yes</input>
+                                  <br>
+                                    <input type="radio" name="Present" value="0">No</input>
+                                    <br>
+                                      Number of Absences: <input type="text" name="Absences"></input><br>
+                                        <br>
+                                          <input type="submit" value="Submit Update" id="UpdateStudent"></input>
+                                        </form>
+      </div>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="upd-iframe" src="Procedures/StudentUpdate.php"></iframe>
     </div>
     <div id="tabs-4">
       <div id="flip">Click To Select Query To Display</div>
