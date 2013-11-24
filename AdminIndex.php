@@ -8,6 +8,12 @@
     $(function() {
     $( "#tabs" ).tabs();
     });
+
+    $(document).ready(function(){
+    $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+    });
+    });
   </script>
   
 
@@ -20,15 +26,35 @@
     border: 1px solid black;
     }
 
-    .registration {
+    .registration, .deletestudent {
     width: 200px;
     clear: both;
     }
-    
+
     /*form input {
     width: 100%;
     clear: both;
     }*/
+
+    #flip {
+    width: 300px;
+    border: 2px solid black;
+    background-color:#01A9DB;
+    color:white;
+    text-align: center;
+    margin-left: auto ;
+    margin-right: auto ;
+    }
+
+    #panel {
+    text-align: center;
+    margin-left: auto ;
+    margin-right: auto ;
+    border: 1px solid black;
+    width:300px;
+    background-color: #E6E6E6;
+    display:none;
+    }
 
     tr:nth-child(even) {
     background-color: #81BEF7;
@@ -53,13 +79,13 @@ if (!empty($_POST)){
         <a href="#tabs-1">Student Registration</a>
       </li>
       <li>
-        <a href="#tabs-2">Exam Taking</a>
+        <a href="#tabs-2">Delete Student</a>
       </li>
       <li>
-        <a href="#tabs-3">Viewing Results</a>
+        <a href="#tabs-3">Update Student</a>
       </li>
       <li>
-        <a href="#tabs-4">Delete Student</a>
+        <a href="#tabs-4">Viewing Results</a>
       </li>
     </ul>
     <div id="tabs-1">
@@ -83,22 +109,35 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
       </div>
-      <iframe style="" name="my-iframe" frameborder="0" scr="Procedures/InsertStudent.php"></iframe>
+      <iframe style="" width="100%" height="100%" seamless="seamless" name="my-iframe" frameborder="0" src="Procedures/InsertStudent.php"></iframe>
     </div>
     <div id="tabs-2">
-    </div>
-    <div id="tabs-3">
-      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
-      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
-    </div>
-    <div id="tabs-4">
-      <form action="Procedures/DeleteStudent.php" target="my-iframe" method="post">
+      <div class="deletestudent">
+        <form action="Procedures/DeleteStudent.php" target="my-iframe3" method="post">
           <p>DELETE Student</p>
           ID: <input type="text" name="ID"></input><br>
-          First Name: <input type="text" name="FirstName"></input><br>
-          Last Name: <input type="text" name="LastName"></input><br>
-          <input type="submit" value="Submit Delete" id="DeleteStudent"></input>
-      </form>
+            First Name: <input type="text" name="FirstName"></input><br>
+              Last Name: <input type="text" name="LastName"></input><br>
+                <input type="submit" value="Submit Delete" id="DeleteStudent"></input>
+              </form>
+      </div>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe3" src="Procedures/DeleteStudent.php"></iframe>
+    </div>
+    <div id="tabs-3">
+      <p>UPDATE Student</p>
+    </div>
+    <div id="tabs-4">
+      <div id="flip">Click To Select Query To Display</div>
+      <div id="panel">
+        <a href="Procedures/StudentInfo.php?link=1" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=2" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
+        <br></br>
+      </div>
+
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="adm-iframe" src="Procedures/StudentInfo.php"></iframe>
     </div>
   </div>
 </body>
