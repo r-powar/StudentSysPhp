@@ -8,6 +8,12 @@
     $(function() {
     $( "#tabs" ).tabs();
     });
+
+    $(document).ready(function(){
+    $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+    });
+    });
   </script>
   
 
@@ -24,11 +30,31 @@
     width: 200px;
     clear: both;
     }
-    
+
     /*form input {
     width: 100%;
     clear: both;
     }*/
+
+    #flip {
+    width: 300px;
+    border: 2px solid black;
+    background-color:#01A9DB;
+    color:white;
+    text-align: center;
+    margin-left: auto ;
+    margin-right: auto ;
+    }
+
+    #panel {
+    text-align: center;
+    margin-left: auto ;
+    margin-right: auto ;
+    border: 1px solid black;
+    width:300px;
+    background-color: #E6E6E6;
+    display:none;
+    }
 
     tr:nth-child(even) {
     background-color: #81BEF7;
@@ -101,8 +127,17 @@ if (!empty($_POST)){
       <p>UPDATE Student</p>
     </div>
     <div id="tabs-4">
-      <a href="Procedures/StudentInfo.php" target="my-iframe2" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
-      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="my-iframe2" src="Procedures/StudentInfo.php"></iframe>
+      <div id="flip">Click To Select Query To Display</div>
+      <div id="panel">
+        <a href="Procedures/StudentInfo.php?link=1" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=2" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
+        <br></br>
+      </div>
+
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="adm-iframe" src="Procedures/StudentInfo.php"></iframe>
     </div>
   </div>
 </body>
