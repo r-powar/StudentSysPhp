@@ -35,4 +35,4 @@ INSERT INTO `Login` (`LOGIN`, `PASSWORD`) VALUES
 ('student', 'student');
 
 INSERT INTO `Admin` (`LOGIN`, `PASSWORD`) VALUES
-('admin', 'admin'),
+('admin', 'admin');

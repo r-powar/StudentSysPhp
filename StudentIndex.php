@@ -72,11 +72,75 @@ if (!empty($_POST)){
       </li>
     </ul>
     <div id="tabs-1">
-      <form>
-        Q1) 1+1 = 2: <br></br>
-        <input type="radio" name="q1" value="True">True</input>
-        <input type="radio" name="q1" value="False">False</input><br></br>
-      </form>
+      <form action="Procedures/InsertExam.php" target="exam-iframe" method="post">
+        ID:
+        <input type="text" name="ID"></input>
+        <br/>Multiple Choice(All questions have just one answer)
+        <br/>
+        <p>
+          1. The addition of 1+1 =2?
+          <br>
+            <input type="radio" name="MCQ1" value="True">True</input>
+            <br>
+              <input type="radio" name="MCQ1" value="Flase">Flase</input>
+              <br>
+                2. The multiplication of 2X2 = 8?
+                <br>
+                  <input type="radio" name="MCQ2" value="True">True</input>
+                  <br>
+                    <input type="radio" name="MCQ2" value="False">False</input>
+                    <br>
+                      3. The division of 25/5 = 34?
+                      <br>
+                        <input type="radio" name="MCQ3" value="True">True</input>
+                        <br>
+                          <input type="radio" name="MCQ3" value="False">False</input>
+                          <br>
+                            4. The substraction of 14-14 = 0?
+                            <br>
+                              <input type="radio" name="MCQ4" value="True">True</input>
+                              <br>
+                                <input type="radio" name="MCQ4" value="False">False</input>
+                                <br>
+                                  5. SJSU was established in 1900?
+                                  <br>
+                                    <input type="radio" name="MCQ5" value="True">True</input>
+                                    <br>
+                                      <input type="radio" name="MCQ5" value="False">False</input>
+                                      <br>
+                                        6. SJSU was the first school to be established out of CSUs?
+                                        <br>
+                                          <input type="radio" name="MCQ6" value="True">True</input>
+                                          <br>
+                                            <input type="radio" name="MCQ6" value="False">False</input>
+                                            <br>
+                                              7. SJSU is located in the heart of Silicon Valley?
+                                              <br>
+                                                <input type="radio" name="MCQ7" value="True">True</input>
+                                                <br>
+                                                  <input type="radio" name="MCQ7" value="False">False</input>
+                                                  <br>
+                                                    8. SJSU Football team won the Military Bowl last year?
+                                                    <br>
+                                                      <input type="radio" name="MCQ8" value="True">True</input>
+                                                      <br>
+                                                        <input type="radio" name="MCQ8" value="False">False</input>
+                                                        <br>
+                                                          9. The department of Computer Science is located in the Macquarie Hall?
+                                                          <br>
+                                                            <input type="radio" name="MCQ9" value="True">True</input>
+                                                            <br>
+                                                              <input type="radio" name="MCQ9" value="False">False</input>
+                                                              <br>
+                                                                10. Is Cisco one of the main sponsors for SJSU?
+                                                                <br>
+                                                                  <input type="radio" name="MCQ10" value="True">True</input>
+                                                                  <br>
+                                                                    <input type="radio" name="MCQ10" value="False">False</input>
+                                                                    <br>
+                                                                      <input type="submit" value="Submit" id="InsertStudent"></input>
+                                                                    </form>
+      <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="exam-iframe" src="Procedures/InsertExam.php"></iframe>
     </div>
     <div id="tabs-2">
       <div id="flip">Click To Select Query To Display</div>
