@@ -4,13 +4,12 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-/*
-$result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
+$link = $_GET['link'];
+if( $link =='1' ){
+    echo "You Selected Link 1!";
+    $result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
                             SEMESTER NATURAL JOIN ATTENDANCE");
-*/
-
-$result = mysqli_query($con,"CALL `ViewStudent` ( );");
-
+                            
 echo "<table border='1'>
 <tr>
 <th>ID</th>
@@ -41,6 +40,32 @@ while($row = mysqli_fetch_array($result))
 echo "</table>";
 
 mysqli_close($con);
+}
+
+if( $link =='2' ){
+    echo "You Selected Link 2!";
+    $result = mysqli_query($con, "SELECT AVG(Score) FROM examresult");
+    
+echo "<table border='1'>
+<tr>
+<th>AVG Score</th>
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+  echo "<tr>";
+  echo "<td>" . $row['AVG(Score)'] . "</td>";
+  echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+}
+
+
+//$result = mysqli_query($con,"CALL `ViewStudent` ( );");
+
+
 ?>
 <style>
   th {
