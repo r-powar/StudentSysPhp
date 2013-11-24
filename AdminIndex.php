@@ -103,8 +103,8 @@ if (!empty($_POST)){
             <input type="radio" name="Term" value="Spring">Spring</input><br>
           Year: <input type="text" name="Year"></input><br>
           Present: <br>
-            <input type="radio" name="Present" value="1">Yes</input><br>
-            <input type="radio" name="Present" value="0">No</input><br>
+            <input type="radio" name="Present" value="0">Yes</input><br>
+            <input type="radio" name="Present" value="1">No</input><br>
           Number of Absences: <input type="text" name="Absences"></input><br><br>
           <input type="submit" value="Submit Registration" id="InsertStudent"></input>
         </form>
@@ -125,25 +125,6 @@ if (!empty($_POST)){
     </div>
     <div id="tabs-3">
       <p>UPDATE Student</p>
-      <form action="Procedures/UpdateStudent.php" target="my-iframe" method="post">
-          ID: <input type="text" name="ID"></input><br>
-          First Name: <input type="text" name="FirstName"></input><br>
-          Last Name: <input type="text" name="LastName"></input><br>
-          Gender:<br> 
-            <input type="radio" name="Gender" value="Male">Male</input><br>
-            <input type="radio" name="Gender" value="Female">Female</input><br>
-          Grade: <input type="text" name="Grade"></input><br>
-          Term: <br>
-            <input type="radio" name="Term" value="Fall">Fall</input><br>
-            <input type="radio" name="Term" value="Spring">Spring</input><br>
-          Year: <input type="text" name="Year"></input><br>
-          Present: <br>
-            <input type="radio" name="Present" value="1">Yes</input><br>
-            <input type="radio" name="Present" value="0">No</input><br>
-          Number of Absences: <input type="text" name="Absences"></input><br><br>
-          <input type="submit" value="Submit Update" id="UpdateStudent"></input>
-        </form>
-      <a href="Procedures/StudentUpdate.php">Update ExamResult</a>
     </div>
     <div id="tabs-4">
       <div id="flip">Click To Select Query To Display</div>
@@ -152,7 +133,9 @@ if (!empty($_POST)){
         <br></br>
         <a href="Procedures/StudentInfo.php?link=2" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
+        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Exam Results.</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=4" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
         <br></br>
       </div>
 
