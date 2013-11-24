@@ -32,7 +32,6 @@ if($_POST){
 		die('One of the fields are missing');
 	}
 
-
 	$Month = "";
 	$Date = "";
 	$Version = rand(1, 2);
@@ -44,37 +43,48 @@ if($_POST){
 	}
 	$Date = $Year."-".$Month;
 
-	$studentInsert = "
-	INSERT INTO Student (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
-	('$ID', '$FirstName', '$LastName', '$Gender', '$Grade')";
+	$studentUpdate = "
+	UPDATE STUDENT SET `FirstName`='$FirstName', `LastName`='$LastName', 
+	`Gender`='$Gender', `Grade`='$Grade' WHERE `ID`= '$ID';";
 
-	$semesterInsert = "
-	INSERT INTO Semester (`ID`, `Term`, `Year`) VALUES
-	('$ID', '$Term', '$Year')";
+	$semesterUpdate = "
+	UPDATE SEMESTER SET `Term`='$Term', `Year`='$Year'
+	WHERE `ID`='$ID';";
+
+	$labresultDelete = "
+	DELETE FROM LABRESULT WHERE ID='$ID';";
+
+	$attendanceDelete = "
+	DELETE FROM ATTENDANCE WHERE ID='$ID';";
 
 	$attendanceInsert = "
 	INSERT INTO Attendance (`ID`, `Absences`, `Present`) VALUES
 	('$ID', '$Absences', '$Present')";
 
-	$examinfoInsert = "
-	INSERT INTO EXAMINFO (`ID`, `Version`, `Date`) VALUES 
-	('$ID', '$Version', '$Date')";
+	$examinfoUpdate = "
+	UPDATE EXAMINFO SET `Version`='$Version', `Date`='$Date'
+	WHERE `ID`='$ID';";
 
-//	mysqli_query($query);
-	if (!mysqli_query($con,$studentInsert)) {
+	if (!mysqli_query($con,$studentUpdate)) {
             die('Error: ' . mysqli_error($con));
         }
 
-    if (!mysqli_query($con,$semesterInsert)) {
+    if (!mysqli_query($con,$semesterUpdate)) {
+            die('Error: ' . mysqli_error($con));
+        }
+    if (!mysqli_query($con,$labresultDelete)) {
+            die('Error: ' . mysqli_error($con));
+        }
+    if (!mysqli_query($con,$attendanceDelete)) {
             die('Error: ' . mysqli_error($con));
         }
     if (!mysqli_query($con,$attendanceInsert)) {
             die('Error: ' . mysqli_error($con));
         }
-    if (!mysqli_query($con,$examinfoInsert)) {
+    if (!mysqli_query($con,$examinfoUpdate)) {
             die('Error: ' . mysqli_error($con));
         }
-	echo "<h1>Student Record Inserted!</h2>";
+	echo "<h1>Student Record Updated!</h2>";
 
 	mysqli_close($con);
 }

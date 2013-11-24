@@ -4,6 +4,7 @@ $uname = "";
 $pword = "";
 $errorMessage = "";
 $num_rows = 0;
+$num_rows2 = 0;
 
 function quote_smart($value, $handle) {
 
@@ -33,24 +34,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$pword = quote_smart($pword, $db_handle);
 
 		$SQL = "SELECT * FROM login WHERE LOGIN = $uname AND PASSWORD = $pword";
+		$SQL2 = "SELECT * FROM admin WHERE LOGIN = $uname AND PASSWORD = $pword";
 		$result = mysql_query($SQL);
+		$result2 = mysql_query($SQL);
 		$num_rows = mysql_num_rows($result);
+		$num_rows2 = mysql_num_rows($result2);
 
 		if ($result) {
 			if ($num_rows > 0) {
 				session_start();
 				$_SESSION['login'] = "1";
-				header ("Location: index.php");
-			}
-			else {
-				//$errorMessage = "Invalid Login";
-				//session_start();
-				//$_SESSION['login'] = '';
-
+				header ("Location: studentindex.php");
+		}
+		else if($result2){
 				session_start();
+				$_SESSION['login'] = "1";
+				header ("Location: adminindex.php");
+
+			}
+		else{
+			session_start();
 				$_SESSION['login'] = "";
 				header ("Location: signup.php");
-			}	
+		}	
 		}
 		else {
 			$errorMessage = "Error logging on";
