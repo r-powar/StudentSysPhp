@@ -17,6 +17,9 @@ DROP TABLE IF EXISTS `EXAMRESULT`;
 DROP TABLE IF EXISTS `LABRESULT`;
 DROP TABLE IF EXISTS `SEMESTER`;
 DROP TABLE IF EXISTS `STUDENT`;
+DROP TABLE IF EXISTS `STUDENTLOGIN`;
+DROP TABLE IF EXISTS `ADMIN`;
+DROP TABLE IF EXISTS `ARCHIVERESULT`;
 
 /***********************************************************************************
             CREATE TABLES
@@ -60,6 +63,23 @@ CREATE TABLE IF NOT EXISTS `STUDENT` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS `STUDENTLOGIN` (
+  `LOGIN` varchar(20) NOT NULL,
+  `PASSWORD` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ADMIN` (
+  `LOGIN` varchar(20) NOT NULL,
+  `PASSWORD` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ARCHIVERESULT` (
+  `ID` int(3) NOT NULL,
+  `Score` int(3) NOT NULL,
+  `LetterGrade` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `UpdateAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 /***********************************************************************************
             CREATE TRIGGERS
 ************************************************************************************/
@@ -89,6 +109,27 @@ CREATE TRIGGER `DeleteStudentCascade` AFTER DELETE ON `STUDENT`
   DELETE from ATTENDANCE where ID = old.ID;
   DELETE from EXAMINFO where ID = old.ID;
   DELETE from SEMESTER where ID = old.ID;
+  DELETE from ARCHIEVERESULT where ID = old.ID;
+END
+//
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `ArchiveInsert`;
+DELIMITER //
+CREATE TRIGGER `ArchiveInsert` AFTER INSERT ON `EXAMRESULT`
+FOR EACH ROW BEGIN
+INSERT INTO ARCHIVERESULT VALUES (New.ID, New.Score, New.LetterGrade, CURRENT_TIMESTAMP);
+END
+//
+DELIMTER ;
+
+DROP TRIGGER IF EXISTS `ArchiveUpdate`;
+DELIMITER //
+CREATE TRIGGER `ArchiveUpdate` AFTER UPDATE ON `EXAMRESULT`
+FOR EACH ROW BEGIN
+UPDATE ARCHIVERESULT
+SET Score = New.Score, LetterGrade = New.LetterGrade, UpdateAt = CURRENT_TIMESTAMP
+WHERE Score = Old.Score and LetterGrade = Old.LetterGrade;
 END
 //
 DELIMITER ;
@@ -119,6 +160,7 @@ INSERT INTO `EXAMRESULT` (`ID`, `Score`, `LetterGrade`) VALUES
 (234, 4, 'D'),
 (567, 2, 'F'),
 (666, 0, 'F');
+
 /*
 INSERT INTO `LABRESULT` (`ID`, `LabScore`, `LabPassFail`) VALUES
 (123, 10, 1),
@@ -144,6 +186,12 @@ INSERT INTO `STUDENT` (`ID`, `FirstName`, `LastName`, `Gender`, `Grade`) VALUES
 (567, 'Suneuy', 'Kim', 'Female', 'Sophmore'),
 (666, 'Cay', 'Horstmann', 'Male', 'Freshman'),
 (789, 'Tieu', 'Nguyen', 'Male', 'Senior');
+
+INSERT INTO `STUDENTLOGIN` (`LOGIN`, `PASSWORD`) VALUES
+('student', 'student');
+
+INSERT INTO `ADMIN` (`LOGIN`, `PASSWORD`) VALUES
+('admin', 'admin');
 
 /***********************************************************************************
             CREATE PROCEDURES

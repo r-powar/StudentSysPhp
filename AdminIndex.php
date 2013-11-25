@@ -141,9 +141,15 @@ if (!empty($_POST)){
             <input type="radio" name="Present" value="1">Yes</input><br>
             <input type="radio" name="Present" value="0">No</input><br>
           Number of Absences: <input type="text" name="Absences"></input><br><br>
-          <input type="submit" value="Submit Update" id="UpdateStudent"></input>
+          <input type="submit" value="Submit Update Student" id="UpdateStudent"></input>
         </form>
-      <a href="Procedures/StudentUpdate.php">Update ExamResult</a>
+      <p>Update ExamResult</p>
+      <form action="Procedures/UpdateStudent.php" target="my-iframe" method="post">
+          ID: <input type="text" name="ID"></input><br>
+          Score: <input type="text" name="Score"></input><br>
+          LetterGrade: <input type="text" name="LetterGrade"></input><br>
+          <input type="submit" value="Submit Update Exam Result" id="UpdateExam"></input>
+        </form>
     </div>
     <div id="tabs-4">
       <div id="flip">Click To Select Query To Display</div>
