@@ -45,14 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if ($errorMessage == "") {
 
 	$db_handle = mysql_connect("localhost", "root", "");
-	$db_found = mysql_select_db("login", $db_handle);
+	$db_found = mysql_select_db("STUDENTSYSTEM", $db_handle);
 
 	if ($db_found) {
 
 		$uname = quote_smart($uname, $db_handle);
 		$pword = quote_smart($pword, $db_handle);
 
-		$SQL = "SELECT * FROM login WHERE LOGIN = $uname";
+		$SQL = "SELECT * FROM STUDENTLOGIN WHERE LOGIN = $uname";
 		$result = mysql_query($SQL);
 		$num_rows = mysql_num_rows($result);
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		else {
 
-			$SQL = "INSERT INTO Login (LOGIN, PASSWORD) VALUES ($uname, $pword)";
+			$SQL = "INSERT INTO STUDENTLOGIN (LOGIN, PASSWORD) VALUES ($uname, $pword)";
 
 			$result = mysql_query($SQL);
 

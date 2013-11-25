@@ -15,8 +15,11 @@ if($_POST){
 	$ID = htmlspecialchars($ID);
 	$FirstName = htmlspecialchars($FirstName);
 	$LastName = htmlspecialchars($LastName);	
-	$SQL = "SELECT * FROM STUDENT WHERE ID='ID' and FirstName='FirstName' and LastName='LastName';";
-	$result = mysqli_query($SQL);
+
+
+
+	$SQL = "SELECT * FROM STUDENT WHERE ID ='$ID' and FirstName ='$FirstName' and LastName = '$LastName';";
+	$result = mysqli_query($con, $SQL);
 	$num_row = 0;
 
 	if($num_row > 0){
