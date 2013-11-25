@@ -160,9 +160,25 @@ if (!empty($_POST)){
         <br></br>
         <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=4" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">TriggerArchive Exam Results</a>
+        <a href="Procedures/StudentInfo.php?link=4" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Trigger Archive Exam Results</a>
         <br></br>
         <a href="Procedures/StudentInfo.php?link=5" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Count Student By Term</a>
+        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
+          Term: <input type="text" name="Term"></input><br>
+          <input type="submit" value="Submit Count By Term" id="CountByTerm"></input>
+        </form>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=6" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">List Student By Grade</a>
+        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
+          Grade: <input type="text" name="Term"></input><br>
+          <input type="submit" value="Submit List Student" id="CountByTerm"></input>
+        </form>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=7" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Archive Exam Result</a>
+        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
+          Date(Year-Month-Date): <input type="text" name="Term"></input><br>
+          <input type="submit" value="Submit Archive" id="CountByTerm"></input>
+        </form>
         <br></br>
       </div>
 

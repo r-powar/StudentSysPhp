@@ -7,8 +7,9 @@ if (mysqli_connect_errno())
 $link = $_GET['link'];
 if( $link =='1' ){
     echo "You Selected Link 1!";
-    $result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
-                            SEMESTER NATURAL JOIN ATTENDANCE");
+    $result = mysqli_query($con,"CALL `ViewStudent` ( );");
+ //   $result = mysqli_query($con,"SELECT * FROM STUDENT NATURAL JOIN 
+ //                           SEMESTER NATURAL JOIN ATTENDANCE");
                             
 echo "<table border='1'>
 <tr>
@@ -121,8 +122,33 @@ echo "</table>";
 mysqli_close($con);
 }
 
+if( $link =='5' ){
+    echo "You Selected Link 5!";
+  if($_POST){
+    $Term = $_POST['Term'];
+    $Term = htmlspecialchars($Term);
+    $result = mysqli_query($con,"CALL `countStudentByTerm` ('$Term');");
+    
+echo "<table border='1'>
+<tr>
+<th>Number Student in Current Term</th>
 
-//$result = mysqli_query($con,"CALL `ViewStudent` ( );");
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+  echo "<tr>";
+  echo "<td>" . $row['NoStudent'] . "</td>";
+  echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+}
+}
+
+
+
 
 ?>
 <style>
