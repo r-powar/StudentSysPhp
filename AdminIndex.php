@@ -144,7 +144,7 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Update Student" id="UpdateStudent"></input>
         </form>
       <p>Update ExamResult</p>
-      <form action="Procedures/UpdateStudent.php" target="my-iframe" method="post">
+      <form action="Procedures/UpdateExam.php" target="my-iframe" method="post">
           ID: <input type="text" name="ID"></input><br>
           Score: <input type="text" name="Score"></input><br>
           LetterGrade: <input type="text" name="LetterGrade"></input><br>
@@ -156,9 +156,11 @@ if (!empty($_POST)){
       <div id="panel">
         <a href="Procedures/StudentInfo.php?link=1" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=2" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
+        <a href="Procedures/StudentInfo.php?link=2" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Student Exam Info</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
+        <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
+        <br></br>
+        <a href="Procedures/StudentInfo.php?link=4" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Archive Exam Results</a>
         <br></br>
       </div>
 

@@ -44,6 +44,39 @@ mysqli_close($con);
 
 if( $link =='2' ){
     echo "You Selected Link 2!";
+    $result = mysqli_query($con, "SELECT * 
+                                  FROM Examinfo NATURAL JOIN labresult NATURAL JOIN examresult");
+    
+echo "<table border='1'>
+<tr>
+<th>ID</th>
+<th>Version</th>
+<th>Exam Date</th>
+<th>Lab Score</th>
+<th>Lab Pass/Fail</th>
+<th>Score</th>
+<th>Letter Grade</th>
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+  echo "<tr>";
+  echo "<td>" . $row['ID'] . "</td>";
+  echo "<td>" . $row['Version'] . "</td>";
+  echo "<td>" . $row['ExamDate'] . "</td>";
+  echo "<td>" . $row['LabScore'] . "</td>";
+  echo "<td>" . $row['LabPassFail'] . "</td>";
+  echo "<td>" . $row['Score'] . "</td>";
+  echo "<td>" . $row['LetterGrade'] . "</td>";
+  echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+}
+
+if( $link =='3' ){
+    echo "You Selected Link 3!";
     $result = mysqli_query($con, "SELECT AVG(Score) FROM examresult");
     
 echo "<table border='1'>
@@ -62,9 +95,34 @@ echo "</table>";
 mysqli_close($con);
 }
 
+if( $link =='4' ){
+    echo "You Selected Link 4!";
+    $result = mysqli_query($con, "SELECT * FROM archiveresult");
+    
+echo "<table border='1'>
+<tr>
+<th>ID</th>
+<th>Score</th>
+<th>LetterGrade</th>
+<th>UpdateAt</th>
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+  echo "<tr>";
+  echo "<td>" . $row['ID'] . "</td>";
+  echo "<td>" . $row['Score'] . "</td>";
+  echo "<td>" . $row['LetterGrade'] . "</td>";
+  echo "<td>" . $row['UpdateAt'] . "</td>";
+  echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+}
+
 
 //$result = mysqli_query($con,"CALL `ViewStudent` ( );");
-
 
 ?>
 <style>

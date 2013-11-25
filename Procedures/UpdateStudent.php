@@ -28,7 +28,7 @@ if($_POST){
 	$Present = htmlspecialchars($Present);
 	$Absences = htmlspecialchars($Absences);
 
-	if($FirstName == "" || $LastName == "" || $Gender == "" || $Grade == "" || $Term == "" || $Year == "" || $Present == "" || $Absences == ""){
+	if($ID = "" || $FirstName == "" || $LastName == "" || $Gender == "" || $Grade == "" || $Term == "" || $Year == "" || $Present == "" || $Absences == ""){
 		die('One of the fields are missing');
 	}
 
