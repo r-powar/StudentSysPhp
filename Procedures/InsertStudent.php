@@ -57,7 +57,7 @@ if($_POST){
 	('$ID', '$Absences', '$Present')";
 
 	$examinfoInsert = "
-	INSERT INTO EXAMINFO (`ID`, `Version`, `ExamDate`) VALUES 
+	INSERT INTO EXAMINFO (`ID`, `Version`, `Date`) VALUES 
 	('$ID', '$Version', '$Date')";
 
 //	mysqli_query($query);
