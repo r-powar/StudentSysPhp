@@ -183,7 +183,7 @@ mysqli_close($con);
 
 if ($link == '9') {
 	echo "You selected Link 9";
-    $result = mysqli_query($con, "SELECT firstname, lastname, lettergrade, absences from student, examresult, attendance where lettergrade = 'A' AND absences > 0");
+    $result = mysqli_query($con, "SELECT firstname, lastname, lettergrade, absences from student inner join examresult inner join attendance where lettergrade = 'A' AND absences > 0");
     
 echo "<table border='1'>
 <tr>
@@ -209,10 +209,11 @@ mysqli_close($con);
 
 if ($link == '10') {
 	echo "You selected Link 10";
-    $result = mysqli_query($con, "SELECT grade, score from student, examresult where grade = 'Freshman' OR grade = 'Senior' AND score > 0");
+    $result = mysqli_query($con, "SELECT ID, grade, score from student natural join examresult where grade = 'Freshman' OR grade = 'Senior' AND score > 0");
     
 echo "<table border='1'>
 <tr>
+<th>ID</th>
 <th>Grade</th>
 <th>Score</th>
 </tr>";
@@ -220,6 +221,7 @@ echo "<table border='1'>
 while($row = mysqli_fetch_array($result))
 {
   echo "<tr>";
+  echo "<td>" . $row['ID'] . "</td>";
   echo "<td>" . $row['grade'] . "</td>";
   echo "<td>" . $row['score'] . "</td>";
   echo "</tr>";
@@ -231,10 +233,11 @@ mysqli_close($con);
 
 if ($link == '11') {
 	echo "You selected Link 11";
-    $result = mysqli_query($con, "SELECT gender, score, absences, labpassfail from student, examresult, attendance, labresult where gender = 'Male' OR gender = 'Female'");
+    $result = mysqli_query($con, "SELECT ID, gender, score, absences, labpassfail from student natural join examresult natural join attendance, labresult where gender = 'Male' OR gender = 'Female'");
     
 echo "<table border='1'>
 <tr>
+<th>ID</th>
 <th>Gender</th>
 <th>Score</th>
 <th>Absences</th>
@@ -244,6 +247,7 @@ echo "<table border='1'>
 while($row = mysqli_fetch_array($result))
 {
   echo "<tr>";
+  echo "<td>" . $row['ID'] . "</td>";
   echo "<td>" . $row['gender'] . "</td>";
   echo "<td>" . $row['score'] . "</td>";
   echo "<td>" . $row['absences'] . "</td>";
