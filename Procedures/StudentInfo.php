@@ -129,7 +129,6 @@ mysqli_close($con);
 
 if( $link =='5' ){
     echo "You Selected Link 5!";
-<<<<<<< HEAD
  /* 
   if($_POST){
     $theTerm = $_POST['theTerm'];
@@ -137,14 +136,13 @@ if( $link =='5' ){
 */
 
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$theTerm');");
-    
-=======
+
   if($_POST) {
     $Term = $_POST['Term'];
     $Term = htmlspecialchars($Term);
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$Term');");
    }
->>>>>>> 43cc7cc8ef863d80501e1e17ff39515572abd7b8
+
 echo "<table border='1'>
 <tr>
 <th>Number Student in Current Term</th>
@@ -163,7 +161,6 @@ mysqli_close($con);
 
 }
 
-<<<<<<< HEAD
 if( $link =='6' ){
     echo "You Selected Link 5!";
  /* 
@@ -177,8 +174,8 @@ if( $link =='6' ){
 echo "<table border='1'>
 <tr>
 <th>Student by Grade</th>
+</tr>";
 
-=======
 if ($link == '6') {
 	echo 'You selected Link 6';
 }
@@ -198,30 +195,22 @@ echo "<table border='1'>
 <th>LastName</th>
 <th>LabPassFail</th>
 <th>Exam Score</th>
->>>>>>> 43cc7cc8ef863d80501e1e17ff39515572abd7b8
 </tr>";
 
 while($row = mysqli_fetch_array($result))
 {
   echo "<tr>";
-<<<<<<< HEAD
   echo "<td>" . $row['FirstName'] . "</td>";
   echo "<td>" . $row['LastName'] . "</td>";
-=======
   echo "<td>" . $row['firstname'] . "</td>";
   echo "<td>" . $row['lastname'] . "</td>";
   echo "<td>" . $row['labpassfail'] . "</td>";
   echo "<td>" . $row['score'] . "</td>";
->>>>>>> 43cc7cc8ef863d80501e1e17ff39515572abd7b8
   echo "</tr>";
 }
 echo "</table>";
 
 mysqli_close($con);
-<<<<<<< HEAD
-
-=======
->>>>>>> 43cc7cc8ef863d80501e1e17ff39515572abd7b8
 }
 
 if ($link == '9') {
