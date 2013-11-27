@@ -180,6 +180,24 @@ if (!empty($_POST)){
           <input type="submit" value="Submit Archive" id="ArchiveDate"></input>
         </form>
         <br></br>
+		<a href="Procedures/StudentInfo.php?link=8" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Who failed lab but passed exam?</a>
+        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
+          Score (input by <, >, <=, >=, = score - ie >5 ): <input type="text" name="labfail"></input><br>
+		  <input type="submit" value="Submit LabFailPass" id="labfailsub"></input>
+        </form>
+        <br></br>
+		<a href="Procedures/StudentInfo.php?link=9" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Receiving A's reflect score?</a>
+        <br></br>
+		<a href="Procedures/StudentInfo.php?link=10" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Freshman score higher than Senior (vice versa)?</a>
+        <br></br>
+		<a href="Procedures/StudentInfo.php?link=11" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Female perform better than male?</a>
+		<br></br>
+		<a href="Procedures/StudentInfo.php?link=12" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Lab Pass Fail On Semester?</a>
+        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
+          Term: <input type="text" name="Term2"></input><br>
+          <input type="submit" value="Submit Term2" id="CountByTerm2"></input>
+        </form>
+        <br></br>
       </div>
 
       <iframe width="100%" height="100%" seamless="seamless" frameborder="0" name="adm-iframe" src="Procedures/StudentInfo.php"></iframe>
