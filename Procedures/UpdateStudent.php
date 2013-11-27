@@ -1,4 +1,5 @@
 <?php
+$num_rows = 0;
 
 if($_POST){
 	$con = mysqli_connect("localhost", "root", "", "StudentSystem"); //Username and Password to connect to phpMyAdmin
@@ -28,9 +29,7 @@ if($_POST){
 	$Present = htmlspecialchars($Present);
 	$Absences = htmlspecialchars($Absences);
 
-	if($ID = "" || $FirstName == "" || $LastName == "" || $Gender == "" || $Grade == "" || $Term == "" || $Year == "" || $Present == "" || $Absences == ""){
-		die('One of the fields are missing');
-	}
+	
 
 	$Month = "";
 	$Date = "";
@@ -43,6 +42,15 @@ if($_POST){
 	}
 	$Date = $Year."-".$Month;
 
+	if($ID == "" || $FirstName == "" || $LastName == "" || $Gender == "" || $Grade == "" || $Term == "" || $Year == "" || $Present == "" || $Absences == ""){
+		die('One of the fields are missing');
+	}
+
+	$SQL = "SELECT * FROM STUDENT WHERE ID='$ID';";
+	$result = mysqli_query($con, $SQL);
+	$num_rows = mysqli_num_rows($result);
+
+	if($num_rows >= 1){
 	$studentUpdate = "
 	UPDATE STUDENT SET `FirstName`='$FirstName', `LastName`='$LastName', 
 	`Gender`='$Gender', `Grade`='$Grade' WHERE `ID`= '$ID';";
@@ -87,6 +95,10 @@ if($_POST){
 	echo "<h1>Student Record Updated!</h2>";
 
 	mysqli_close($con);
+	}
+	else{
+		die('Error, No such ID');
+	}
 }
 
 ?> 

@@ -1,4 +1,9 @@
 <?php
+
+if($_POST){
+    $theTerm = $_POST['theTerm'];
+}
+
 $con=mysqli_connect("localhost","root","","StudentSystem");
 if (mysqli_connect_errno())
   {
@@ -124,10 +129,13 @@ mysqli_close($con);
 
 if( $link =='5' ){
     echo "You Selected Link 5!";
+ /* 
   if($_POST){
-    $Term = $_POST['Term'];
-    $Term = htmlspecialchars($Term);
-    $result = mysqli_query($con,"CALL `countStudentByTerm` ('$Term');");
+    $theTerm = $_POST['theTerm'];
+    $theTerm = htmlspecialchars($theTerm);
+*/
+
+    $result = mysqli_query($con,"CALL `countStudentByTerm` ('$theTerm');");
     
 echo "<table border='1'>
 <tr>
@@ -138,15 +146,43 @@ echo "<table border='1'>
 while($row = mysqli_fetch_array($result))
 {
   echo "<tr>";
-  echo "<td>" . $row['NoStudent'] . "</td>";
+  echo "<td>" . $row['count(distinct ID)'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";
 
 mysqli_close($con);
-}
+
 }
 
+if( $link =='6' ){
+    echo "You Selected Link 5!";
+ /* 
+  if($_POST){
+    $theTerm = $_POST['theTerm'];
+    $theTerm = htmlspecialchars($theTerm);
+*/
+
+    $result = mysqli_query($con,"CALL `StudentByGrade` ('$theGrade');");
+    
+echo "<table border='1'>
+<tr>
+<th>Student by Grade</th>
+
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+  echo "<tr>";
+  echo "<td>" . $row['FirstName'] . "</td>";
+  echo "<td>" . $row['LastName'] . "</td>";
+  echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+
+}
 
 
 

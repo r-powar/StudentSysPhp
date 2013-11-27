@@ -109,7 +109,6 @@ CREATE TRIGGER `DeleteStudentCascade` AFTER DELETE ON `STUDENT`
   DELETE from ATTENDANCE where ID = old.ID;
   DELETE from EXAMINFO where ID = old.ID;
   DELETE from SEMESTER where ID = old.ID;
-  DELETE from ARCHIEVERESULT where ID = old.ID;
 END
 //
 DELIMITER ;
