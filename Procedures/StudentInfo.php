@@ -137,6 +137,9 @@ if( $link =='5' ){
 
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$theTerm');");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 1f6c860... Update StudentInfo.php
 
   if($_POST) {
     $Term = $_POST['Term'];
@@ -144,9 +147,12 @@ if( $link =='5' ){
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$Term');");
    }
 
+<<<<<<< HEAD
 =======
     
 >>>>>>> parent of 824484a... Merge branch 'master' of https://github.com/smliao/StudentSysPhp
+=======
+>>>>>>> parent of 1f6c860... Update StudentInfo.php
 echo "<table border='1'>
 <tr>
 <th>Number Student in Current Term</th>
@@ -181,6 +187,9 @@ echo "<table border='1'>
 </tr>";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 1f6c860... Update StudentInfo.php
 if ($link == '6') {
 	echo 'You selected Link 6';
 }
@@ -210,6 +219,9 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['FirstName'] . "</td>";
   echo "<td>" . $row['LastName'] . "</td>";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 1f6c860... Update StudentInfo.php
   echo "<td>" . $row['firstname'] . "</td>";
   echo "<td>" . $row['lastname'] . "</td>";
   echo "<td>" . $row['labpassfail'] . "</td>";
