@@ -136,6 +136,7 @@ if( $link =='5' ){
 */
 
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$theTerm');");
+<<<<<<< HEAD
 
   if($_POST) {
     $Term = $_POST['Term'];
@@ -143,6 +144,9 @@ if( $link =='5' ){
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$Term');");
    }
 
+=======
+    
+>>>>>>> parent of 824484a... Merge branch 'master' of https://github.com/smliao/StudentSysPhp
 echo "<table border='1'>
 <tr>
 <th>Number Student in Current Term</th>
@@ -176,6 +180,7 @@ echo "<table border='1'>
 <th>Student by Grade</th>
 </tr>";
 
+<<<<<<< HEAD
 if ($link == '6') {
 	echo 'You selected Link 6';
 }
@@ -195,6 +200,8 @@ echo "<table border='1'>
 <th>LastName</th>
 <th>LabPassFail</th>
 <th>Exam Score</th>
+=======
+>>>>>>> parent of 824484a... Merge branch 'master' of https://github.com/smliao/StudentSysPhp
 </tr>";
 
 while($row = mysqli_fetch_array($result))
@@ -202,6 +209,7 @@ while($row = mysqli_fetch_array($result))
   echo "<tr>";
   echo "<td>" . $row['FirstName'] . "</td>";
   echo "<td>" . $row['LastName'] . "</td>";
+<<<<<<< HEAD
   echo "<td>" . $row['firstname'] . "</td>";
   echo "<td>" . $row['lastname'] . "</td>";
   echo "<td>" . $row['labpassfail'] . "</td>";
@@ -256,13 +264,15 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['ID'] . "</td>";
   echo "<td>" . $row['grade'] . "</td>";
   echo "<td>" . $row['score'] . "</td>";
+=======
+>>>>>>> parent of 824484a... Merge branch 'master' of https://github.com/smliao/StudentSysPhp
   echo "</tr>";
 }
 echo "</table>";
 
 mysqli_close($con);
-}
 
+<<<<<<< HEAD
 if ($link == '11') {
 	echo "You selected Link 11";
     $result = mysqli_query($con, "SELECT ID, gender, score, absences, labpassfail from student natural join examresult natural join attendance, labresult where gender = 'Male' OR gender = 'Female'");
@@ -285,35 +295,10 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['absences'] . "</td>";
   echo "<td>" . $row['labpassfail'] . "</td>";
   echo "</tr>";
-}
-echo "</table>";
-
-mysqli_close($con);
+=======
+>>>>>>> parent of 824484a... Merge branch 'master' of https://github.com/smliao/StudentSysPhp
 }
 
-if ($link == '12') {
-	echo "You selected Link 12";
-    $result = mysqli_query($con, "SELECT labpassfail, term, lastname from labresult, semester, student where labpassfail = '1' or labpassfail ='0' and term = 'Spring' or term = 'Fall'");
-    
-echo "<table border='1'>
-<tr>
-<th>LabPassFail</th>
-<th>Term</th>
-<th>LastName</th>
-</tr>";
-
-while($row = mysqli_fetch_array($result))
-{
-  echo "<tr>";
-  echo "<td>" . $row['labpassfail'] . "</td>";
-  echo "<td>" . $row['term'] . "</td>";
-  echo "<td>" . $row['lastname'] . "</td>";
-  echo "</tr>";
-}
-echo "</table>";
-
-mysqli_close($con);
-}
 
 
 ?>
