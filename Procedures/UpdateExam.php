@@ -20,7 +20,11 @@ if($_POST){
 	if($ID == "" || $Score == "" || $LetterGrade == ""){
 		die('One of the fields are missing');
 	}
+	$SQL = "SELECT * FROM STUDENT WHERE ID='$ID';";
+	$result = mysqli_query($con, $SQL);
+	$num_rows = mysqli_num_rows($result);
 
+	if($num_rows >= 1){
 	$examUpdate = "
 	UPDATE EXAMRESULT SET `Score`='$Score', `LetterGrade`='$LetterGrade'
 	WHERE `ID`= '$ID';";
@@ -31,6 +35,9 @@ if($_POST){
 	echo "<h1>Student Exam Record Updated!</h2>";
 
 	mysqli_close($con);
+	}else{
+		die('Error, No such ID');
+	}
 }
 
 ?> 

@@ -164,20 +164,20 @@ if (!empty($_POST)){
         <br></br>
         <a href="Procedures/StudentInfo.php?link=5" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Count Student By Term</a>
         <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Term: <input type="text" name="Term"></input><br>
+          Term: <input type="text" name="theTerm"></input><br>
           <input type="submit" value="Submit Count By Term" id="CountByTerm"></input>
         </form>
         <br></br>
         <a href="Procedures/StudentInfo.php?link=6" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">List Student By Grade</a>
         <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Grade: <input type="text" name="Term"></input><br>
-          <input type="submit" value="Submit List Student" id="CountByTerm"></input>
+          Grade: <input type="text" name="theGrade"></input><br>
+          <input type="submit" value="Submit List Student" id="ListByGrade"></input>
         </form>
         <br></br>
         <a href="Procedures/StudentInfo.php?link=7" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Archive Exam Result</a>
         <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Date(Year-Month-Date): <input type="text" name="Term"></input><br>
-          <input type="submit" value="Submit Archive" id="CountByTerm"></input>
+          Date(Year-Month-Date): <input type="text" name="theDate"></input><br>
+          <input type="submit" value="Submit Archive" id="ArchiveDate"></input>
         </form>
         <br></br>
 		<a href="Procedures/StudentInfo.php?link=8" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Who failed lab but passed exam?</a>
