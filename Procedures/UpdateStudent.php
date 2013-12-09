@@ -70,7 +70,7 @@ if($_POST){
 	('$ID', '$Absences', '$Present')";
 
 	$examinfoUpdate = "
-	UPDATE EXAMINFO SET `Version`='$Version', `Date`='$Date'
+	UPDATE EXAMINFO SET `Version`='$Version', `ExamDate`='$Date'
 	WHERE `ID`='$ID';";
 
 	if (!mysqli_query($con,$studentUpdate)) {

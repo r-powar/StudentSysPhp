@@ -69,10 +69,11 @@ if($_POST){
    $LetterGrade = 'A';
    }
       
+   $current = date("Y-m-d h:m:s", time());
 
   $examResultInsert = "
-  INSERT INTO ExamResult (`ID`, `Score`, `LetterGrade`) VALUES
-  ('$ID', '$Score', '$LetterGrade')";
+  INSERT INTO ExamResult (`ID`, `Score`, `LetterGrade`, `UpdateAt`) VALUES
+  ('$ID', '$Score', '$LetterGrade', '$current')";
   
   echo 'You have scored ' . $Score . ' points!';
   if (!mysqli_query($con,$examResultInsert)) {

@@ -145,6 +145,8 @@ mysqli_close($con);
 if( $link =='6' ){
 	$theTerm = "Spring";
     echo "$theTerm Semester Count";
+    $current = date("Y-m-d h:m:s", time());
+    echo "$current";
     $result = mysqli_query($con,"CALL `countStudentByTerm` ('$theTerm');");
 
 echo "<table border='1'>
