@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `EXAMINFO` (
 CREATE TABLE IF NOT EXISTS `EXAMRESULT` (
   `ID` int(3) NOT NULL,
   `Score` int(3) NOT NULL,
-  `LetterGrade` char(1) COLLATE utf8_unicode_ci NOT NULL
+  `LetterGrade` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `UpdateAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `LABRESULT` (
@@ -113,6 +114,7 @@ END
 //
 DELIMITER ;
 
+/*
 DROP TRIGGER IF EXISTS `ArchiveInsert`;
 DELIMITER //
 CREATE TRIGGER `ArchiveInsert` AFTER INSERT ON `EXAMRESULT`
@@ -132,6 +134,7 @@ WHERE Score = Old.Score and LetterGrade = Old.LetterGrade;
 END
 //
 DELIMITER ;
+*/
 
 /***********************************************************************************
             INSERT DATA TABLES
@@ -152,13 +155,13 @@ INSERT INTO `EXAMINFO` (`ID`, `Version`, `ExamDate`) VALUES
 (567, 2, '2000-05-10'),
 (666, 2, '1980-05-10');
 
-INSERT INTO `EXAMRESULT` (`ID`, `Score`, `LetterGrade`) VALUES
-(123, 10, 'A'),
-(456, 8, 'B'),
-(789, 6, 'C'),
-(234, 4, 'D'),
-(567, 2, 'F'),
-(666, 0, 'F');
+INSERT INTO `EXAMRESULT` (`ID`, `Score`, `LetterGrade`, `UpdateAt`) VALUES
+(123, 10, 'A', CURRENT_TIMESTAMP),
+(456, 8, 'B', CURRENT_TIMESTAMP),
+(789, 6, 'C', CURRENT_TIMESTAMP),
+(234, 4, 'D', CURRENT_TIMESTAMP),
+(567, 2, 'F', CURRENT_TIMESTAMP),
+(666, 0, 'F', CURRENT_TIMESTAMP);
 
 /*
 INSERT INTO `LABRESULT` (`ID`, `LabScore`, `LabPassFail`) VALUES
