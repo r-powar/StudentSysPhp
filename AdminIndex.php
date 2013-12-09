@@ -14,6 +14,14 @@
     $("#panel").slideToggle("slow");
     });
     });
+
+    function getlink ( selectedtype )
+  {
+  document.theTermForm.supporttype.value = selectedtype ;
+  document.supportform.submit() ;
+  }
+
+
   </script>
   
 
@@ -150,6 +158,13 @@ if (!empty($_POST)){
           LetterGrade: <input type="text" name="LetterGrade"></input><br>
           <input type="submit" value="Submit Update Exam Result" id="UpdateExam"></input>
         </form>
+
+        <p>Archive Exam Result</p>
+       <form action="Procedures/ArchiveExam.php" target="my-iframe" method="post">
+          Date: <input type="text" name="theDate"></input><br>
+          <input type="submit" value="Submit Archive" id="ArchiveExam"></input>
+        </form>
+
     </div>
     <div id="tabs-4">
       <div id="flip">Click To Select Query To Display</div>
@@ -160,25 +175,17 @@ if (!empty($_POST)){
         <br></br>
         <a href="Procedures/StudentInfo.php?link=3" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=4" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Trigger Archive Exam Results</a>
+        <a href="Procedures/StudentInfo.php?link=4" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Archive Exam Results</a>
+
+        <p style="border:1px solid black; background-color:green;color:yellow;">Count Student By Term</p>
+        <a href="Procedures/StudentInfo.php?link=5" target="adm-iframe" >Fall</a>
+        <a href="Procedures/StudentInfo.php?link=6" target="adm-iframe" >Spring</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=5" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Count Student By Term</a>
-        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Term: <input type="text" name="theTerm"></input><br>
-          <input type="submit" value="Submit Count By Term" id="CountByTerm"></input>
-        </form>
-        <br></br>
-        <a href="Procedures/StudentInfo.php?link=6" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">List Student By Grade</a>
-        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Grade: <input type="text" name="theGrade"></input><br>
-          <input type="submit" value="Submit List Student" id="ListByGrade"></input>
-        </form>
-        <br></br>
-        <a href="Procedures/StudentInfo.php?link=7" target="adm-iframe" style="border:1px solid black; background-color:green;color:yellow;">Archive Exam Result</a>
-        <form action="Procedures/StudentInfo.php" target="my-iframe" method="post">
-          Date(Year-Month-Date): <input type="text" name="theDate"></input><br>
-          <input type="submit" value="Submit Archive" id="ArchiveDate"></input>
-        </form>
+        <p style="border:1px solid black; background-color:green;color:yellow;">Count Student By Term</p>
+        <a href="Procedures/StudentInfo.php?link=7" target="adm-iframe" >Freshman</a>
+        <a href="Procedures/StudentInfo.php?link=8" target="adm-iframe" >Sophomore</a>
+        <a href="Procedures/StudentInfo.php?link=9" target="adm-iframe" >Junior</a>
+        <a href="Procedures/StudentInfo.php?link=10" target="adm-iframe" >Senior</a>
         <br></br>
       </div>
 
