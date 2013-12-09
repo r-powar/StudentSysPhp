@@ -68,7 +68,7 @@ if($_POST){
    if ($Score >=9) {
    $LetterGrade = 'A';
    }
-      
+  date_default_timezone_set('America/Los_Angeles');
    $current = date("Y-m-d h:m:s", time());
 
   $examResultInsert = "
