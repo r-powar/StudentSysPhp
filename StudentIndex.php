@@ -147,9 +147,9 @@ if (!empty($_POST)){
       <div id="panel">
         <a href="Procedures/StudentInfoForStudent.php?link=1" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Detailed Student Information</a>
         <br></br>
-          <a href="Procedures/StudentInfoForStudent.php?link=2" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
+          <a href="Procedures/StudentInfoForStudent.php?link=2" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Exam Info</a>
         <br></br>
-        <a href="Procedures/StudentInfo.php?link=3" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Exam Results</a>
+        <a href="Procedures/StudentInfo.php?link=3" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Average Exam Score</a>
         <br></br>
         <a href="Procedures/StudentInfo.php?link=4" target="stu-iframe" style="border:1px solid black; background-color:green;color:yellow;">Etc.</a>
         <br></br>
